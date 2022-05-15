@@ -18,14 +18,9 @@ let fs = require('fs');
 
 let server = http.createServer(function(request, response){
     console.log('request was made' + request.url);
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    
-
-    let myReadStream = fs.createReadStream(__dirname +'/readMe.txt','utf-8');
-    // let mywriteStream = fs.createWriteStream(__dirname +'/writeMe.txt');
-
-    //using pipes
-
+    // response.writeHead(200, {'Content-Type': 'text/plain'});// for text files to be sent brwser interpret
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    let myReadStream = fs.createReadStream(__dirname +'/index.html','utf-8');
     myReadStream.pipe(response);
 
 
